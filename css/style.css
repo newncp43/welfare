@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap');
+
+body {
+  font-family: "Prompt", sans-serif;
+}
+.logo {
+  margin-top: 6px;
+  padding-right: 30px;
+  margin-left: 15px;
+  width: 200px;
+  height: 40px;
+}
+
+.item {
+  color: brown;
+  font-family: "Prompt", sans-serif;
+  font-size: 100%;
+}
+
+* {
+  margin-top: 5px;
+  font-family: "Prompt", sans-serif;
+}
+
+.ui.dropdown.item {
+  color: rgb(42, 95, 165);
+}
+
+h1.textlog {
+  margin-top: 11px;
+  
+  font-family: "Prompt", sans-serif;
+}
+
+.container {
+width: 500px;
+ 
+}
+
