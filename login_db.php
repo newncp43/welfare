@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include('server.php');
@@ -15,11 +16,12 @@ if (isset($_POST['login_user'])) {
         array_push($errors, "Password is required");
     }
     if (count($errors) == 0) {
-
+        $password = md5($password);
         $query = "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password' ";
         $result = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($result) == 1) {
+
             $row = mysqli_fetch_array($result);
             $_SESSION['username'] = $username;
             $_SESSION['userlevel'] = $row['userlevel'];

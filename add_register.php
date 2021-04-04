@@ -1,12 +1,10 @@
 <?php
 session_start();
 include('server.php');
-if ($_SESSION['userlevel'] != 'admin') {
-  header('location: login.php');
-}
+
 
 $sql = "SELECT * FROM tbl_position ORDER BY pos_id asc " or die("Error:" . mysqli_error($conn));
-$result = mysqli_query($conn, $sql);
+$result1 = mysqli_query($conn, $sql);
 
 
 
@@ -23,45 +21,33 @@ $result = mysqli_query($conn, $sql);
   <link rel="stylesheet" type="text/css" href="css\style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  
 
   <title>Add register</title>
 
 </head>
-
 <body>
-  <div class="ui secondary  menu">
-    <a class="item1">
-      <img class="logo" src="image\TIPS-logo-Blue.png">
-    </a>
-    <div class="ui simple dropdown item">
-      พนักงาน <i class="dropdown icon"><br></i>
-      <div class="menu">
-        <a class="item" href="add_register.php">ลงทะเบียนพนักงาน</a>
-        <a class="item">ข้อมูลพนักงาน</a>
-      </div>
-    </div>
-
-    <div class="right menu" style="margin-top: 5px;">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search..." style="height: 37px; border-radius: 2000px;">
-        <i class="inverted circular search link icon"></i>
-      </div>
-    </div>
-    <a class="ui item">
-      ออกจากระบบ
-    </a>
-  </div>
+  <?php include('navAdmin.php'); ?>
 
 
   <form class="ui form" action="add_register_db.php" method="post">
 
     <center>
       <div class="input-group" id="choose">
-        <img class="ui medium image" src="image\2.jpg" style="width: 150px;">
+        <img class="ui medium image" src="image\avatar.png" style="width: 150px;">
 
         <br>
         <div class="container">
-
+          <?php if (isset($_SESSION['errors'])) : ?>
+            <div class="success">
+              <h4 style="color: red;">
+                <?php
+                echo $_SESSION['errors'];
+                unset($_SESSION['errors']);
+                ?>
+              </h4>
+            </div>
+          <?php endif ?>
           <div class="ui form">
             <div class="two fields">
               <div class="input-group field">
@@ -77,11 +63,24 @@ $result = mysqli_query($conn, $sql);
 
 
           <label for="position" style="font-weight: bold;">Position</label>
-          <select name="pos_id" id="pos_id" placeholder="Position">
-            <option value="pos_id">Position</option>
-            <?php foreach ($result as $results) { ?>
+          <select name="type_position" id="type_position" placeholder="Position">
+
+            <?php foreach ($result1 as $results) { ?>
+              <option value="<?php echo $results["type_position"]; ?>">
+                <?php echo $results["type_position"]; ?>
+              </option>
+
+            <?php } ?>
+
+          </select>
+          <br>
+
+          <label for="position" style="font-weight: bold;">Limit</label>
+          <select name="limit" id="limit" placeholder="Limit">
+
+            <?php foreach ($result1 as $results) { ?>
               <option value="<?php echo $results["limit"]; ?>">
-                <?php echo $results["type_position"]; ?> 
+                <?php echo $results["limit"]; ?>/year
               </option>
 
             <?php } ?>
@@ -99,12 +98,12 @@ $result = mysqli_query($conn, $sql);
           </div>
           <div class="input-group field">
             <label for="password">Password</label>
-            <input type="text" placeholder="Password" name="password">
+            <input type="password" placeholder="Password" name="password_1">
           </div>
 
           <div class="input-group field">
             <label for="password1">Confirm password</label>
-            <input type="text" placeholder="Confirm password" name="password1">
+            <input type="password" placeholder="Confirm password" name="password_2">
           </div>
 
 

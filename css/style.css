@@ -22,9 +22,11 @@ body {
   font-family: "Prompt", sans-serif;
 }
 
-.ui.dropdown.item {
-  color: rgb(42, 95, 165);
+img.ui.avatar.image {
+    top: 9px;
+    left: 7px;
 }
+
 
 h1.textlog {
   margin-top: 11px;
@@ -37,3 +39,11 @@ width: 500px;
  
 }
 
+a.item {
+  top: 2px;
+}
+
+.table {
+  margin-left: 300px;
+  margin-right: 300px;
+}

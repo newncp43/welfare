@@ -1,38 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+include('server.php');
+if ($_SESSION['userlevel'] != 'admin') {
+    header('location: login.php');
+}
+if (!isset($_SESSION['username'])) {
+    header('location: login.php');
+}
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header('location: login.php');
+}
+$user = $_SESSION['username'];
+$query = "SELECT * FROM tbl_data_employees WHERE username ='$user' " or die("Error:" . mysqli_error($conn));
+$result = mysqli_query($conn, $query);
+$row_am = mysqli_fetch_array($result);
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css\semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master\semantic.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="semantic/dist/semantic.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style\style_login.css">
-</head>
 
-<body>
+?>
+
 <div class="ui secondary  menu">
-        <a class="item1">
-            <img class="logo" src="image\TIPS-logo-Blue.png" style="
-    width: 120px;
-    height: 30px;
-    margin-top: 10px;">
-        </a>
-        <a class="item">
-            ข้อมูลแอดมิน
-        </a>
-        <a class="item">
-            ประวัติการทำรายการ
-        </a>
-        <a class="item">
-            อนุมัติสวัสดิการ
-        </a>
+    <a class="item1">
+        <img class="logo" src="image\TIPS-logo-Blue.png">
+    </a>
+
+    <a class="item" href="add_register.php">ลงทะเบียนพนักงาน</a>
+    <a class="item" href="data_employees.php">ข้อมูลพนักงาน</a>
+
+
+
+
+
+
+    <div class="right menu">
+
+        <img class="ui avatar image" src="image\avatar.png">
+        <div class="ui simple dropdown item" style="top: 2px;">
+            <?php echo $row_am['firstname'] ?> <?php echo $row_am['lastname'] ?> <i class="dropdown icon"><br></i>
+            <div class="menu">
+                <a class=" ui item" href="login.php?logout='1'  " onclick="return confirm('ต้องการออกจากระบบใช่มั้ย?')">
+                    ออกจากระบบ
+                </a>
+            </div>
+        </div>
+
+
     </div>
+
 </div>
