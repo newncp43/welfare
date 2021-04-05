@@ -14,6 +14,7 @@ $result1 = mysqli_query($conn, $sql);
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +22,33 @@ $result1 = mysqli_query($conn, $sql);
   <link rel="stylesheet" type="text/css" href="css\style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
-  
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+
 
   <title>Add register</title>
 
 </head>
+
 <body>
+  <?php if (@$_GET['do'] == 'success') {
+    echo '<script type="text/javascript">
+    Swal.fire({
+      icon: "success",
+      title: "เข้าสู่ระบบสำเร็จ",
+      showConfirmButton: false,
+      timer: 2000
+    })</script>';
+  }
+
+  ?>
   <?php include('navAdmin.php'); ?>
+
+
 
 
   <form class="ui form" action="add_register_db.php" method="post">
@@ -57,6 +78,10 @@ $result1 = mysqli_query($conn, $sql);
               <div class="input-group field">
                 <label for="lastname">Last Name</label>
                 <input type="text" placeholder="Last name" name="lastname">
+              </div>
+              <div class="input-group field">
+                <label for="lastname">Phone Number</label>
+                <input type="text" placeholder="Phone Number" name="phonenumber">
               </div>
             </div>
           </div>
@@ -108,7 +133,7 @@ $result1 = mysqli_query($conn, $sql);
 
 
           <div><br>
-            <button type="submit" name="emp_add" class="ui active input button">
+            <button type="submit" name="emp_add" class="ui active input button" style="background-color: #002d56; color: white">
               <i class="save icon"></i>
               save
             </button>

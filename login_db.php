@@ -27,10 +27,10 @@ if (isset($_POST['login_user'])) {
             $_SESSION['userlevel'] = $row['userlevel'];
 
             if ($_SESSION['userlevel'] == 'admin') {
-                header("location: add_register.php");
+                header("location: add_register.php?&do=success");
             }
             if ($_SESSION['userlevel'] == 'employee') {
-                header("location: ");
+                header("location: profile.php?&do=success");
             }
         } else {
             array_push($errors, "Wrong username/password combination");

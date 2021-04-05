@@ -7,6 +7,7 @@ $errors = array();
 if (isset($_POST['emp_add'])) {
     $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
     $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $phone_number = mysqli_real_escape_string($conn, $_POST['phonenumber']);
     $type_position = mysqli_real_escape_string($conn, $_POST['type_position']);
     $limit = mysqli_real_escape_string($conn, $_POST['limit']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -18,6 +19,9 @@ if (isset($_POST['emp_add'])) {
     }
     if (empty($lastname)) {
         array_push($errors, "Lastname is required");
+    }
+    if (empty($phone_number)) {
+        array_push($errors, "Phone Number is required");
     }
     if (empty($type_position)) {
         array_push($errors, "Position is required");
@@ -35,7 +39,7 @@ if (isset($_POST['emp_add'])) {
         array_push($errors, "The two passwords do not match ");
     }
 
-    $user_check_query = "SELECT * FROM tbl_user WHERE username = '$username' ";
+    $user_check_query = "SELECT * FROM tbl_user WHERE username = '$username' OR tel = '$phone_number' ";
     $query = mysqli_query($conn, $user_check_query);
     $result = mysqli_fetch_assoc($query);
 
@@ -43,18 +47,21 @@ if (isset($_POST['emp_add'])) {
         if ($result['username'] === $username) {
             array_push($errors, "Username already exists");
         }
+        if ($result['tel'] === $phone_number) {
+            array_push($errors, "Phone Number already exists");
+        }
     }
 
     if (count($errors) == 0) {
         $password = md5($password_1);
 
-        $sql1 = "INSERT INTO tbl_data_employees (firstname, lastname, type_position, limits, username,password) VALUES ('$firstname', '$lastname', '$type_position', '$limit', '$username','$password')";
+        $sql1 = "INSERT INTO tbl_data_employees (firstname, lastname, tel, type_position, limits, username,password) VALUES ('$firstname', '$lastname', '$phone_number', '$type_position', '$limit', '$username','$password')";
         mysqli_query($conn, $sql1);
 
         $sql2 = "INSERT INTO tbl_user (username, password, userlevel) VALUES ('$username', '$password', 'employee')";
         mysqli_query($conn, $sql2);
 
-        $_SESSION['username'] = $username;
+
         echo "<script type='text/javascript'>";
         echo "alert('Succesfuly');";
         echo "window.location = 'add_register.php'; ";

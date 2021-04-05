@@ -16,6 +16,11 @@ include('server.php');
     <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master\semantic.min.css">
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
 
 
 </head>
@@ -33,7 +38,7 @@ include('server.php');
     <p></p>
     <br><br><br>
     <center>
-        <img src="https://www.pinclipart.com/picdir/big/164-1640714_user-symbol-interface-contact-phone-set-add-sign.png" style="width: 150px;">
+        <img src="image\avatar.png" style="width: 150px;">
         <br><br><br>
         <div class="container" style="width: 300px;">
             <?php if (isset($_SESSION['errors'])) : ?>
@@ -64,7 +69,7 @@ include('server.php');
                     <input type="password" style="margin-left: 0px;border-left-width: 0;" name="password" placeholder="Password">
                 </div>
                 <br>
-                <button class="ui blue button" name="login_user">Login</button>
+                <button class="ui blue button" name="login_user" style="background-color: #002d56">Login</button>
             </form>
         </div>
     </center>

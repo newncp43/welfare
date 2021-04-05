@@ -23,8 +23,11 @@ body {
 }
 
 img.ui.avatar.image {
-    top: 9px;
+    top: 5px;
     left: 7px;
+    width: 35px;
+    height: 35px;
+
 }
 
 
@@ -39,11 +42,27 @@ width: 500px;
  
 }
 
-a.item {
-  top: 2px;
+.card {
+  width: 500px;
+  
 }
 
 .table {
   margin-left: 300px;
   margin-right: 300px;
+}
+
+button.ui.red.button.but {
+  width: 53px;
+  height: 40px;
+}
+
+button.ui.green.button {
+  width: 53px;
+  height: 40px;
+}
+.ui.compact.menu {
+  height: 42px;
+  margin-top: 8px;
+  margin-right: 10px;
 }
