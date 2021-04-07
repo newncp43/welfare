@@ -15,18 +15,23 @@
 
 <body>
   <?php include('navEmployee.php'); ?>
+
+
+
   <br>
   <center>
     <div class="card">
-      <form class="ui form">
+      <form class="ui form" action="sendfile_db.php" method="post">
+        <input type="hidden" name="firstname" value="<?php echo $row_am['firstname']; ?>">
+        <input type="hidden" name="lastname" value="<?php echo $row_am['lastname']; ?>">
         <div class="ui form"><br>
           <div class="field">
             <label>ประเภทสวัสดิการ</label>
-            <select>
-              <option value="">เลือกประเภทสวัสดิการ</option>
-              <option value="0">เจ็บป่วยทั่วไป</option>
-              <option value="1">อุบัติเหตุ</option>
-              <option value="3">ทันตกรรม</option>
+            <select name="type">
+              <option value="0">เลือกประเภทสวัสดิการ</option>
+              <option value="เจ็บป่วยทั่วไป">เจ็บป่วยทั่วไป</option>
+              <option value="อุบัติเหตุ">อุบัติเหตุ</option>
+              <option value="ทันตกรรม">ทันตกรรม</option>
             </select>
           </div><br>
         </div>
@@ -59,33 +64,33 @@
           <br>
 
 
-
-
-
-          <form action="/action_page.php">
-            <input type="file" id="myfile" name="myfile" style="
+          <input type="file" id="myfile" name="myfile" style="
     border-bottom-width: 0px;"><br>
-            <input type="file" id="myfile" name="myfile" style="
+          <input type="file" id="myfile" name="myfile" style="
     border-top-width: 0px;"><br><br>
-          </form>
+
         </div>
 
-        <form class="ui form">
-          <div class="field">
-            <label>หมายเหตุ</label>
-            <input type="text" name="first-name" placeholder="อธิบายเพิ่มเติม">
-          </div><br>
 
-          <button class="ui primary button">
-            Send
-          </button>
-          <button class="ui red button">
-            Back
-          </button>
-        </form>
+        <div class="field">
+          <label>หมายเหตุ</label>
+          <input type="text" name="first-name" placeholder="อธิบายเพิ่มเติม">
+        </div><br>
+
+        <button class="ui primary button" name="sendfile">
+          Send
+        </button>
+
+
+      </form>
     </div>
     </div>
   </center>
+
+
+
+
+
 </body>
 
 
