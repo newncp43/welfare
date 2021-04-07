@@ -13,8 +13,10 @@ if (isset($_POST['sendfile'])) {
         'default_font' => 'sarabun'
     ]);
 
-    $html = '<div style="text-align:center"><h3>ใบเบิกเงินค่ารักษา</h3></div>
-    <div><label>ข้าพเจ้า.........' . $firstname . '....' . $lastname . '.........</label></div>
+    $html = '
+    <img style="width: 200px; height: 40px; " src="image\TIPS-logo-Blue.png"><br>
+    <div style="text-align:center"><h3>ใบเบิกเงินค่ารักษา</h3></div>
+    <div><label>ข้าพเจ้า    ' . $firstname . '</label> <label>   ' . $lastname . '</label></div>
     ';
     $mpdf->writeHtml($html);
 
