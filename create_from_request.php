@@ -21,9 +21,11 @@
   <br>
   <center>
     <div class="card">
-      <form class="ui form" action="sendfile_db.php" method="post">
+      <form class="ui form" action="create_from_request_db.php" method="post">
         <input type="hidden" name="firstname" value="<?php echo $row_am['firstname']; ?>">
         <input type="hidden" name="lastname" value="<?php echo $row_am['lastname']; ?>">
+        <input type="hidden" name="username" value="<?php echo $row_am['username']; ?>">
+        <input type="hidden" name="type_position" value="<?php echo $row_am['type_position']; ?>">
         <div class="ui form"><br>
           <div class="field">
             <label>ประเภทสวัสดิการ</label>
@@ -37,48 +39,25 @@
         </div>
         <div class="field">
           <label>วันที่ขอเบิกสวัสดิการ</label>
-          <input type="date" name="last-name" placeholder="วว/ดด/ปปปป">
+          <input type="date" name="datetime" placeholder="วว/ดด/ปปปป">
         </div><br>
         <div class="field">
           <label>วันที่ได้รับการรักษา</label>
-          <input type="date" name="first-name" placeholder="วว/ดด/ปปปป">
+          <input type="date" name="datehot" placeholder="วว/ดด/ปปปป">
         </div><br>
         <div class="field">
           <label>ค่ารักษาพยาบาล</label>
-          <input type="text" name="last-name" placeholder="จำนวนเต็มเท่านั้น">
+          <input type="text" name="money" placeholder="จำนวนเต็มเท่านั้น">
         </div><br>
-        <div class="field">
-          <label>เอกสารแนบ</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              ใบเสร็จจ่ายเงิน
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              ใบรับรองแพทย์
-            </label>
-          </div>
-          <br>
-
-
-          <input type="file" id="myfile" name="myfile" style="
-    border-bottom-width: 0px;"><br>
-          <input type="file" id="myfile" name="myfile" style="
-    border-top-width: 0px;"><br><br>
-
-        </div>
 
 
         <div class="field">
           <label>หมายเหตุ</label>
-          <input type="text" name="first-name" placeholder="อธิบายเพิ่มเติม">
+          <input type="text" name="detail" placeholder="อธิบายเพิ่มเติม">
         </div><br>
 
-        <button class="ui primary button" name="sendfile">
-          Send
+        <button class="ui primary button" name="create" style="background-color: #002d56">
+          สร้าง
         </button>
 
 

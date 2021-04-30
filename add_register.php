@@ -138,6 +138,7 @@ $result1 = mysqli_query($conn, $sql);
               save
             </button>
           </div>
+        </div>
     </center>
   </form>
 

@@ -46,7 +46,7 @@ include('server.php');
                     <th>ชื่อ-นามสกุล</th>
                     <th>ตำแหน่ง</th>
                     <th>สถานะ</th>
-                    <th>ข้อมูลเพิ่มเติม</th>
+
                     <th>แก้ไขข้อมูล</th>
                     <th>ลบข้อมูล</th>
                 </tr>
@@ -59,9 +59,6 @@ include('server.php');
                         <td><?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?></td>
                         <td><?php echo $row['type_position']; ?></td>
                         <td><?php echo $row['userlevel']; ?></td>
-                        <td>
-
-                        </td>
                         <td>
                             <center>
                                 <a class="buttonn">
